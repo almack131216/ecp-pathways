@@ -1,0 +1,142 @@
+
+<!doctype html>
+<title>Pathways Hotstepping</title>
+<link rel="stylesheet" id="pathways-css" href="pathways.css" type="text/css" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+
+<div>
+  <p>
+    Years: <span id="txt-years">?</span>
+    -------Sets: <span id="txt-sets">?</span>
+    -------Classes: <span id="txt-classes">?</span>
+  </p>
+</div>
+<div id="pw-wrap" class="wrapper init">
+  <div class="column y1">
+    <div class="title-year">Year 1</div>
+    <div class="btn y1 s1" onclick="btnPathways(1,1)">Set 1</div>
+    <div class="btn y1 s2" onclick="btnPathways(1,2)">Set 2</div>
+    <div class="btn y1 s3" onclick="btnPathways(1,3)">Set 3</div>
+    <div class="btn y1 s4" onclick="btnPathways(1,4)">Set 4</div>    
+  </div>
+  <div class="column line-wrap y1-y2 from-S1 down-0">
+    <svg>
+      <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
+      <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
+   </svg>
+  </div>
+  <div class="column y2">
+    <div class="title-year">Year 2</div>
+    <div class="btn y2 s1" onclick="btnPathways(2,1)">Set 1</div>
+    <div class="btn y2 s2" onclick="btnPathways(2,2)">Set 2</div>
+    <div class="btn y2 s3" onclick="btnPathways(2,3)">Set 3</div>
+    <div class="btn y2 s4" onclick="btnPathways(2,4)">Set 4</div>
+  </div>
+  <div class="column line-wrap y2-y3 from-S1 down-1">
+    <svg>
+      <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
+      <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
+   </svg>
+  </div>
+  <div class="column y3">
+    <div class="title-year">Year 3</div>
+    <div class="btn y3 s1" onclick="btnPathways(3,1)">Set 1</div>
+    <div class="btn y3 s2" onclick="btnPathways(3,2)">Set 2</div>
+    <div class="btn y3 s3" onclick="btnPathways(3,3)">Set 3</div>
+    <div class="btn y3 s4" onclick="btnPathways(3,4)">Set 4</div>
+  </div>
+  <div class="column line-wrap y3-y4 from-S1 down-2">
+    <svg>
+      <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
+      <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
+   </svg>
+  </div>
+  <div class="column y4">
+    <div class="title-year">Year 4</div>
+    <div class="btn y4 s1" onclick="btnPathways(4,1)">Set 1</div>
+    <div class="btn y4 s2" onclick="btnPathways(4,2)">Set 2</div>
+    <div class="btn y4 s3" onclick="btnPathways(4,3)">Set 3</div>
+    <div class="btn y4 s4" onclick="btnPathways(4,4)">Set 4</div>
+  </div>
+  <div class="column line-wrap y4-exams from-S1 down-3">
+    <svg>
+      <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
+      <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
+   </svg>
+  </div>
+  <div class="column exams">
+    <div class="title-year">&nbsp;</div>
+    <div class="btn e1" onclick="btnPathwaysExam(1)">IGCSE</div>
+    <div class="btn e2" onclick="btnPathwaysExam(2)">IGCSE<br>or CAE</div>
+    <div class="btn e3" onclick="btnPathwaysExam(3)">CAE</div>
+    <div class="btn e4" onclick="btnPathwaysExam(4)">CAE<br>or FCE</div>
+  </div>
+</v>
+<script type="text/javascript">
+  var arrYears = [];
+  var arrSets = [];
+
+  function updateStatusString(arrYears,arrSets){
+    document.getElementById("txt-years").innerHTML = JSON.stringify(arrYears) + ' (' + arrYears.length + ')';
+    document.getElementById("txt-sets").innerHTML = JSON.stringify(arrSets) + ' (' + arrSets.length + ')';
+    document.getElementById("txt-classes").innerHTML = JSON.stringify(arrYears) + ' (' + arrYears.length + ')';
+    $("#pw-wrap").attr('class', "wrapper y" + arrYears.length + " s" + arrSets[arrSets.length - 1]);
+  }
+
+  function updateSet(getYear, getSet){
+    arrSets[getYear-1] = getSet;
+    console.log('SET ' + getSet);
+    // $(".column.y1").attr('class', "column y1");
+    // $(".column.y2").attr('class', "column y2");
+    // $(".column.y3").attr('class', "column y3");
+    // $(".column.y4").attr('class', "column y4");
+    for (i = 0; i < 5; i++) {
+      if(i > getYear) $(".column.y" + i).attr('class', "column y" + i);
+    }
+    // $.each(arrYears, function(index, value){
+    //   console.log(`RESET COLUMNS ${index}: ${value}`);
+    //   if(value >= getYear){
+    //     console.log(`YES ${index}: ${value}`);
+    //     $(".column.y" + index + 1).attr('class', "column y" + value);
+    //   }
+    // });
+    $(".column.y" + getYear).attr('class', "column y" + getYear + " s" + getSet);
+    updateStatusString(arrYears,arrSets);
+    // $(".column .y" + getYear).attr('class', "column y" + getYear + " s" + getSet);
+  }
+
+  function btnPathways(getYear, getSet){
+    console.log('--------------------');
+    console.log('Year and Set = ' + getYear + ', ' + getSet);
+      if(!arrYears.length && getYear == 1){
+        arrYears.push(getYear);
+        arrSets.push(getSet);
+        updateSet(getYear,getSet);
+        console.log('YR | START | Year ' + getYear + ', ' + getSet);
+      }else if(arrYears.length == getYear){
+        // arrYears.push(getYear);
+        console.log('YR | NO CHANGE | Year ' + getYear + ', ' + getSet);
+        updateSet(getYear,getSet);
+        // console.log('> SET Year ' + getYear);
+      }else if(arrYears.length == getYear - 1){
+        arrYears.push(getYear);
+        arrSets.push(getSet);
+        updateSet(getYear,getSet);
+        console.log('> YR | SET | Year ' + getYear + ', ' + getSet);
+      }else if(getYear < arrYears.length + 1){
+        arrYears.splice(getYear, arrYears.length - (getYear) );
+        arrSets.splice(getYear, arrSets.length - (getYear) );
+        updateSet(getYear,getSet);
+        console.log('< YR | GO BACK | Year ' + getYear + ', ' + getSet);
+      }
+      // updateSet(getYear,getSet);
+      // updateStatusString(arrYears,arrSets);
+  }
+
+  //REF:
+  /*
+  https://stackoverflow.com/questions/26568536/remove-all-items-after-an-index/26568611
+  https://www.quackit.com/html/templates/css_flexbox_templates.cfm
+  */
+
+</script>
