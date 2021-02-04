@@ -218,5 +218,12 @@ body {
         cursor:pointer;
     }
 }
-  
-  
+
+@media all\0 {
+    .column-line-wrap svg {
+        display:none !important;
+    }
+    .column-line-wrap.v-0 {
+        border-top:none !important;
+    }
+}
