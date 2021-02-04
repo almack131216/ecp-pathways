@@ -183,69 +183,40 @@ body {
             }
         }
     }
+
+    /* button states */
+    /* show active columns (to select) */
+    &.init .column.y1 > div,
+    &.y1 .column.y2 > div,
+    &.y2 .column.y3 > div,
+    &.y3 .column.y4 > div {
+        opacity:1;    
+    }
+
+    /* show selected button */
+    .column {
+        &.s1 > div.btn:nth-child(2),
+        &.s2 > div.btn:nth-child(3),
+        &.s3 > div.btn:nth-child(4),
+        &.s4 > div.btn:nth-child(5) {
+            opacity:1;
+            cursor:pointer;
+        }
+    }
+    /* exam buttons */
+    &.y4.s1 .column.exams > div.btn:nth-child(2) {
+        opacity:1;
+        cursor:pointer;
+    }
+    &.y4.s2 .column.exams > div.btn:nth-child(3) {
+        opacity:1;
+        cursor:pointer;
+    }
+    &.y4.s3 .column.exams > div.btn:nth-child(4),
+    &.y4.s4 .column.exams > div.btn:nth-child(5) {
+        opacity:1;
+        cursor:pointer;
+    }
 }
   
   
-  .wrapper.init .column.y1 > div,
-  .wrapper.y1 .column.y2 > div,
-  .wrapper.y2 .column.y3 > div,
-  .wrapper.y3 .column.y4 > div {
-    opacity:1;    
-  }
-
-  .wrapper.y1 .column:nth-child(1) > div.btn {
-    /* color: white; */
-  }
-  .wrapper.y2 .column:nth-child(1) > div.btn,
-  .wrapper.y2 .column:nth-child(2) > div.btn {
-    /* color: white; */
-  }
-  .wrapper.y3 .column:nth-child(1) > div.btn,
-  .wrapper.y3 .column:nth-child(2) > div.btn,
-  .wrapper.y3 .column:nth-child(3) > div.btn {
-    /* color: white; */
-  }
-  .wrapper.y4 .column:nth-child(1) > div.btn,
-  .wrapper.y4 .column:nth-child(2) > div.btn,
-  .wrapper.y4 .column:nth-child(3) > div.btn,
-  .wrapper.y4 .column:nth-child(4) > div.btn {
-    /* color: white; */
-  }
-  .wrapper.y4.s1 .column.exams > div.btn:nth-child(2) {
-    opacity:1;
-    cursor:pointer;
-  }
-  .wrapper.y4.s2 .column.exams > div.btn:nth-child(3) {
-    opacity:1;
-    cursor:pointer;
-  }
-  .wrapper.y4.s3 .column.exams > div.btn:nth-child(4),
-  .wrapper.y4.s4 .column.exams > div.btn:nth-child(5) {
-    opacity:1;
-    cursor:pointer;
-  }
-  /* .wrapper.y4.s4 .column.exams > div.btn:nth-child(4) {
-    opacity:1;
-    cursor:pointer;
-  } */
-  .wrapper .column.s1 > div.btn:nth-child(2),
-  .wrapper .column.s2 > div.btn:nth-child(3),
-  .wrapper .column.s3 > div.btn:nth-child(4),
-  .wrapper .column.s4 > div.btn:nth-child(5) {
-    opacity:1;
-    cursor:pointer;
-  }
-  /* .column:nth-child(2) > div:nth-child(1),
-  .column:nth-child(12) > div:nth-child(2) {
-    flex: 1;
-    }
-  .column:nth-child(2) > div:nth-child(2),
-  .column:nth-child(12) > div:nth-child(1) {
-    flex: 11;
-    } */
-  .column > div {
-    /* flex: 2; */
-    }
-  .column > div:nth-child(1) {
-    /* flex: 4; */
-    }
