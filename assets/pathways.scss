@@ -1,0 +1,251 @@
+/* PATHWAYS INTERACTIVE */
+
+/*
+REF:
+https://stackoverflow.com/questions/18012420/draw-diagonal-lines-in-div-background-with-css
+https://codepen.io/nelsonleite/pen/jMjMdB
+*/
+
+$btn-height: 80px;
+$btn-margin: 20px;
+$line-offset: 40px;
+$line-width: 40px;
+$btn-top-1: calc(#{$btn-height + $btn-margin});
+$btn-top-2: calc(#{$btn-height + $btn-margin} * 2);
+$btn-top-3: calc(#{$btn-height + $btn-margin} * 3);
+$btn-top-4: calc(#{$btn-height + $btn-margin} * 4);
+/* Base colors */
+$color_primary: #252259; //dark blue
+$color_secondary: #9e0012; //dark red
+
+$color_accent-1: #682c80;
+$color_accent-2: #1d86c1;
+$color_accent-3: #11ad97;
+$color_accent-4: #ac9e33;
+
+body {
+    background: $color_primary;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    /* height: 75vh; */
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        > div {
+            font-size: 20px;    
+            background: $color_primary;            
+            margin:10px 0;
+            margin: calc(#{$btn-margin / 2}) 0;
+            color: white;
+            box-sizing: border-box;
+            /* flex: 1; */
+        }
+        > .title-year {
+            margin:0;
+            font-weight:bold;
+            text-align:center;
+            height:50px;
+            width:100%;
+            background: #666;
+            display:block;
+        }
+        > .btn {
+            border-radius:50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $btn-height;
+            height: $btn-height;
+            color: white;
+            border:2px solid $color_accent-4;
+            cursor:pointer;
+            /* position:absolute;
+            z-index:0;     */
+        }
+        &.exams > .btn {
+            font-size:14px;
+            background: $color_accent-1;      
+        }
+
+        > div {
+            opacity:0.3;
+        }
+    }
+    /* (END) .column */
+
+    .column-line-wrap {
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width:$line-width;
+        // height:100px;
+        /* background:green; */
+        // top:125px;
+        bottom:auto;
+
+        &.down {
+            // top:150px;
+            bottom:auto;
+
+            &.from-S2 {
+                // top:225px;
+                top:calc(#{$btn-top-2} + #{$line-offset});
+            }
+            &.from-S3 {
+                // top:325px;
+                top:calc(#{$btn-top-3} + #{$line-offset});
+            }
+            &.from-S4 {
+                // top:425px;
+                top:calc(#{$btn-top-4} + #{$line-offset});
+            }
+        }
+
+        &.up {
+            bottom:100px;
+            top:auto;
+
+            &.from-S3.v-1 {
+                // bottom:-225px;
+                bottom:calc(0px - (#{$btn-top-2} + #{$line-offset}));
+            }
+            &.from-S3.v-2 {
+                // bottom:-125px;
+                bottom:calc(0px - (#{$btn-top-1} + #{$line-offset}));
+            }
+            &.from-S4.v-1 {
+                // bottom:-325px;
+                bottom:calc(0px - (#{$btn-top-3} + #{$line-offset}));
+            }
+            &.from-S4.v-2 {
+                // bottom:-225px;
+                bottom:calc(0px - (#{$btn-top-2} + #{$line-offset}));
+            }
+            &.from-S4.v-3 {
+                // bottom:-125px;
+                bottom:calc(0px - (#{$btn-top-1} + #{$line-offset}));
+            }
+        }
+
+        &.down.from-S1,
+        &.up.from-S2 {
+            // top:125px;
+            top:calc(#{$btn-top-1} + #{$line-offset});
+        }
+
+        &.init line {
+            display:none;
+        }
+
+        &.down .line-up {
+            display:none;
+        }
+        &.up .line-down {
+            display:none;
+        }
+
+        &.v-0 {
+            height:0px;
+            border-top:1px solid white;
+            // margin-top: -25px;
+            margin-top:calc(0px - #{$line-offset});
+        }
+        &.v-1 {
+            // height:50px;
+            height:calc(#{$btn-top-1} - #{$line-offset * 2});
+        }
+        &.v-2 {
+            // height:150px;
+            height:calc(#{$btn-top-2} - #{$line-offset * 2});
+        }
+        &.v-3 {
+            // height:250px;
+            height:calc(#{$btn-top-3} - #{$line-offset * 2});
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+            line {
+                stroke: white;
+                stroke-width: 1;
+            }
+        }
+    }
+}
+  
+  
+  .wrapper.init .column.y1 > div,
+  .wrapper.y1 .column.y2 > div,
+  .wrapper.y2 .column.y3 > div,
+  .wrapper.y3 .column.y4 > div {
+    opacity:1;    
+  }
+
+  .wrapper.y1 .column:nth-child(1) > div.btn {
+    /* color: white; */
+  }
+  .wrapper.y2 .column:nth-child(1) > div.btn,
+  .wrapper.y2 .column:nth-child(2) > div.btn {
+    /* color: white; */
+  }
+  .wrapper.y3 .column:nth-child(1) > div.btn,
+  .wrapper.y3 .column:nth-child(2) > div.btn,
+  .wrapper.y3 .column:nth-child(3) > div.btn {
+    /* color: white; */
+  }
+  .wrapper.y4 .column:nth-child(1) > div.btn,
+  .wrapper.y4 .column:nth-child(2) > div.btn,
+  .wrapper.y4 .column:nth-child(3) > div.btn,
+  .wrapper.y4 .column:nth-child(4) > div.btn {
+    /* color: white; */
+  }
+  .wrapper.y4.s1 .column.exams > div.btn:nth-child(2) {
+    opacity:1;
+    cursor:pointer;
+  }
+  .wrapper.y4.s2 .column.exams > div.btn:nth-child(3) {
+    opacity:1;
+    cursor:pointer;
+  }
+  .wrapper.y4.s3 .column.exams > div.btn:nth-child(4),
+  .wrapper.y4.s4 .column.exams > div.btn:nth-child(5) {
+    opacity:1;
+    cursor:pointer;
+  }
+  /* .wrapper.y4.s4 .column.exams > div.btn:nth-child(4) {
+    opacity:1;
+    cursor:pointer;
+  } */
+  .wrapper .column.s1 > div.btn:nth-child(2),
+  .wrapper .column.s2 > div.btn:nth-child(3),
+  .wrapper .column.s3 > div.btn:nth-child(4),
+  .wrapper .column.s4 > div.btn:nth-child(5) {
+    opacity:1;
+    cursor:pointer;
+  }
+  /* .column:nth-child(2) > div:nth-child(1),
+  .column:nth-child(12) > div:nth-child(2) {
+    flex: 1;
+    }
+  .column:nth-child(2) > div:nth-child(2),
+  .column:nth-child(12) > div:nth-child(1) {
+    flex: 11;
+    } */
+  .column > div {
+    /* flex: 2; */
+    }
+  .column > div:nth-child(1) {
+    /* flex: 4; */
+    }

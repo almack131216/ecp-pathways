@@ -19,7 +19,7 @@
     <div class="btn y1 s3" onclick="btnPathways(1,3)">Set 3</div>
     <div class="btn y1 s4" onclick="btnPathways(1,4)">Set 4</div>    
   </div>
-  <div class="column line-wrap y1-y2 from-S1 down-0">
+  <div class="column-line-wrap init y2">
     <svg>
       <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
       <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
@@ -32,7 +32,7 @@
     <div class="btn y2 s3" onclick="btnPathways(2,3)">Set 3</div>
     <div class="btn y2 s4" onclick="btnPathways(2,4)">Set 4</div>
   </div>
-  <div class="column line-wrap y2-y3 from-S1 down-1">
+  <div class="column-line-wrap init y3">
     <svg>
       <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
       <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
@@ -45,7 +45,7 @@
     <div class="btn y3 s3" onclick="btnPathways(3,3)">Set 3</div>
     <div class="btn y3 s4" onclick="btnPathways(3,4)">Set 4</div>
   </div>
-  <div class="column line-wrap y3-y4 from-S1 down-2">
+  <div class="column-line-wrap init y4">
     <svg>
       <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
       <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
@@ -58,7 +58,7 @@
     <div class="btn y4 s3" onclick="btnPathways(4,3)">Set 3</div>
     <div class="btn y4 s4" onclick="btnPathways(4,4)">Set 4</div>
   </div>
-  <div class="column line-wrap y4-exams from-S1 down-3">
+  <div class="column-line-wrap init y5">
     <svg>
       <line class="line-up" x1='0' y1='100%' x2='100%' y2='0' />
       <line class="line-down" x1='0' y1='0' x2='100%' y2='100%' />
@@ -75,12 +75,38 @@
 <script type="text/javascript">
   var arrYears = [];
   var arrSets = [];
+  var styleWrapperInit = 'wrapper init';
+  var styleWrapper = '';
 
   function updateStatusString(arrYears,arrSets){
     document.getElementById("txt-years").innerHTML = JSON.stringify(arrYears) + ' (' + arrYears.length + ')';
     document.getElementById("txt-sets").innerHTML = JSON.stringify(arrSets) + ' (' + arrSets.length + ')';
     document.getElementById("txt-classes").innerHTML = JSON.stringify(arrYears) + ' (' + arrYears.length + ')';
-    $("#pw-wrap").attr('class', "wrapper y" + arrYears.length + " s" + arrSets[arrSets.length - 1]);
+
+    // if(!styleWrapper){
+      styleWrapper = "wrapper y" + arrYears.length + " s" + arrSets[arrSets.length - 1];
+    // }else{
+    //   styleWrapper += " y" + arrYears.length + " s" + arrSets[arrSets.length - 1];
+    // }
+    $("#pw-wrap").attr('class', styleWrapper);
+
+    
+
+    if(arrYears.length>1){
+      var yDiff = 0;
+      var lineUpOrDown = '';
+      if(arrSets[arrSets.length - 1] >= arrSets[arrSets.length - 2]){
+        yDiff = arrSets[arrSets.length - 1] - arrSets[arrSets.length - 2];
+        lineUpOrDown = 'down v-' + yDiff;
+      }else{
+        yDiff = arrSets[arrSets.length - 2] - arrSets[arrSets.length - 1];
+        lineUpOrDown = 'up v-' + yDiff;
+      }
+      var lineDiv = "column-line-wrap y" + arrYears.length;
+      console.log("lineDiv: " + lineDiv);
+      $(".column-line-wrap.y" + arrYears.length).attr('class', lineDiv + ' xxx ' + lineUpOrDown + ' from-S' + arrSets[arrSets.length - 2]);
+    }
+    
   }
 
   function updateSet(getYear, getSet){
@@ -91,7 +117,10 @@
     // $(".column.y3").attr('class', "column y3");
     // $(".column.y4").attr('class', "column y4");
     for (i = 0; i < 5; i++) {
-      if(i > getYear) $(".column.y" + i).attr('class', "column y" + i);
+      if(i > getYear){
+        $(".column.y" + i).attr('class', "column y" + i);
+        $(".column-line-wrap.y" + i).attr('class', "column-line-wrap init y" + i);
+      }
     }
     // $.each(arrYears, function(index, value){
     //   console.log(`RESET COLUMNS ${index}: ${value}`);
