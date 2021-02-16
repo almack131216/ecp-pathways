@@ -494,6 +494,25 @@ body {
         opacity:1;    
     }
 
+    &.y1_s1 .column.y2 > div:nth-child(5),
+    &.y2_s1 .column.y3 > div:nth-child(5),
+    &.y3_s1 .column.y4 > div:nth-child(5),
+    &.y4_s1 .column.y5 > div:nth-child(5),
+    &.y1.s4 .column.y2 > div:nth-child(2),
+    &.y2_s4 .column.y3 > div:nth-child(2),
+    &.y3_s4 .column.y4 > div:nth-child(2),
+    &.y3_s4 .column.y4 > div:nth-child(3),
+    &.y3_s3 .column.y4 > div:nth-child(2),
+    &.y3_s2 .column.y4 > div:nth-child(5),
+    &.y3_s1 .column.y4 > div:nth-child(4) {        
+        opacity:0.3 !important;
+        span {
+            // background-color:red !important;
+            cursor:not-allowed !important;
+        }
+    }
+
+
     /* show selected button */
     .column {
         &.s1 > div.btn:nth-child(2),
