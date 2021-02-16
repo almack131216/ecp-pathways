@@ -8,12 +8,13 @@ https://codepen.io/nelsonleite/pen/jMjMdB
 
 $btn-height: 80px;
 $btn-margin: 20px;
-$line-offset: 40px;
+$line-offset: 90px;
 $line-width: 40px;
-$btn-top-1: calc(#{$btn-height + $btn-margin});
-$btn-top-2: calc(#{$btn-height + $btn-margin} * 2);
-$btn-top-3: calc(#{$btn-height + $btn-margin} * 3);
-$btn-top-4: calc(#{$btn-height + $btn-margin} * 4);
+$title-height: 100px;
+$btn-top-1: 100px;
+$btn-top-2: 200px;
+$btn-top-3: 300px;
+$btn-top-4: 400px;
 /* Base colors */
 $color_primary: #252259; //dark blue
 $color_secondary: #9e0012; //dark red
@@ -22,6 +23,14 @@ $color_accent-1: #682c80;
 $color_accent-2: #1d86c1;
 $color_accent-3: #11ad97;
 $color_accent-4: #ac9e33;
+
+// $color_debug-1:red;
+// $color_debug-2:blue;
+// $color_debug-3:gray;
+$color_debug-1:transparent;
+$color_debug-2:transparent;
+$color_debug-3:transparent;
+
 
 $bp: 800px;
 $bp-1: 799px;
@@ -46,6 +55,47 @@ body {
 
     @media(max-width:$bp-1){
         flex-direction: column;
+    }
+
+    .column-legend {
+        background:$color_debug-2;
+        width:160px;
+        padding: 0 $btn-margin;
+        @media(max-width:$bp-1){
+            width:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title-logo {
+            display:block;
+            width:120px;
+            height:120px;
+            background-image:url(https://www.englishcollege.cz/wp-content/themes/ecp/assets/ECP-logo-full-white-transparent.svg);
+            background-repeat:no-repeat;
+            background-size: 500px;
+            background-color:$color_debug-1;
+            @media(max-width:$bp-1){
+                // display:inline-block;
+            }
+
+            span {
+                display:none;
+            }
+        }
+
+        .title-text {
+            display:block;
+            color:white;
+            font-size:24px;
+            line-height:30px;
+            word-break: 1;
+            @media(max-width:$bp-1){
+                // display:inline-block;
+                padding-left:$btn-margin;
+            }
+        }
     }
 
     .column {
@@ -77,15 +127,20 @@ body {
         > .title-year {
             margin:0;
             font-weight:bold;
-            text-align:center;
-            height:50px;
+            text-align:center;            
             width:100%;
-            background: #666;
+            height:$title-height;
+            line-height:$title-height;
+            // padding-top: $btn-margin;
+            // padding-bottom: $btn-margin;
+            background: $color_debug-3;
             display:block;
+            font-size:14px;
             @media(max-width:$bp-1){
                 width:20%;
                 height:auto;
-            }
+                line-height:$btn-height;
+            }            
         }
         > .btn {
             /* position:absolute;
@@ -115,6 +170,20 @@ body {
         &.ib {            
             align-items: stretch;
             justify-content: flex-start;
+
+            .title-year {
+                span.ib-disc {
+                    display:inline-block;
+                    border:1px solid white;
+                    border-radius:50%;
+                    width:60px;
+                    height:60px;
+                    margin:0 auto;
+                    line-height:60px;
+                    text-align:center;
+                    font-size:20px;
+                }
+            }
 
             &.text {               
 
@@ -369,7 +438,7 @@ body {
             height:0px;
             border-top:1px solid white;
             // margin-top: -25px;
-            margin-top:calc(0px - #{$line-offset});
+            margin-top:calc(0px - #{$btn-height / 2});
             @media(max-width:$bp-1){                
                 margin-top:0 !important;
                 border-top:0;
@@ -380,7 +449,7 @@ body {
         }
         &.v-1 {
             // height:50px;
-            height:calc(#{$btn-top-1} - #{$line-offset * 2});             
+            height:calc(#{$btn-top-1} - #{$btn-height});             
             @media(max-width:$bp-1){
                 width:20%;
                 // margin-left:10%;
@@ -389,7 +458,7 @@ body {
         }
         &.v-2 {
             // height:150px;
-            height:calc(#{$btn-top-2} - #{$line-offset * 2});
+            height:calc(#{$btn-top-2} - #{$btn-height});
             @media(max-width:$bp-1){
                 width:40%;
                 // margin-left:10%;
@@ -397,7 +466,7 @@ body {
         }
         &.v-3 {
             // height:250px;
-            height:calc(#{$btn-top-3} - #{$line-offset * 2});
+            height:calc(#{$btn-top-3} - #{$btn-height});
             @media(max-width:$bp-1){
                 width:60%;
                 // margin-left:10%;
