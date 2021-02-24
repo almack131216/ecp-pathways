@@ -143,24 +143,43 @@ body {
         }
         > .title-year {
             margin:0;
+            padding:20px 0;
             font-weight:bold;
             text-align:center;            
             width:100%;
             height:$title-height;
-            line-height:$title-height;
+            // line-height:$title-height;
             // padding-top: $btn-margin;
             // padding-bottom: $btn-margin;
             background: $color_debug-3;
             display:block;
-            font-size:14px;
+            font-size:15px;
             @media(max-width:$bp-1){
                 width:20%;
                 height:auto;
-                line-height:30px;
+                // line-height:30px;
             }
             // @media(max-width:$bp2-1){
             //     width:100%;
-            // }            
+            // }       
+            
+            span.year {
+                display:block;
+                background:red;
+                margin:10px auto;                
+                // line-height:70px;
+            }
+            .hotspot {
+                display:block;
+                background:$color_accent-2;
+                border-radius:15px;
+                width:30px;
+                height:30px;
+                line-height:30px;
+                margin:0 auto;
+                color:white;
+                text-decoration:none;
+            }
         }
         > .btn {
             /* position:absolute;
@@ -673,3 +692,11 @@ body {
         border:none !important;
     }
 }
+
+.modal {
+    display: none;
+  }
+  
+  .modal.is-open {
+    display: block;
+  }

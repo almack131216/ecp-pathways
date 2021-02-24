@@ -1,0 +1,9 @@
+For years 1 to 3 can you alter it  so that there cannot be a movement between sets 1 & 4
+In other words, from  set 1, moving to the next year, set 4 will not light up. And vice versa.
+
+And can there should be only movement of one set between years 3 & 4
+ie. set 2 in year 3 cannot move to set 4. Set 1 in year 3 can only move to set 2 etc
+
+// modal
+https://micromodal.now.sh/#installation
+demo: https://codepen.io/charles1971/pen/BayGZBK

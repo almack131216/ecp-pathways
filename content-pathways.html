@@ -1,10 +1,14 @@
 
 <!doctype html>
+<head>
 <title>Pathways Hotstepping</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" id="pathways-css" href="pathways.css?v=2102181500" type="text/css" media="all">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
-
+<link rel="stylesheet" id="pathways-modal-css" href="style/micromodal.css?v=21024" type="text/css" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+</head>
+<body>
 <div>
   <p style="display:none;">
     Years: <span id="txt-years">?</span>
@@ -20,7 +24,10 @@
     </div>    
   </div>
   <div class="column y1">
-    <div class="title-year">Year 1</div>
+    <div class="title-year">
+      <span class="year">Year 1</span>
+      <a class="hotspot" data-micromodal-trigger="modal-1" href='javascript:;'>a</a>
+    </div>
     <div class="btn y1 s1" onclick="btnPathways(1,1)"><span>Set 1</span></div>
     <div class="btn y1 s2" onclick="btnPathways(1,2)"><span>Set 2</span></div>
     <div class="btn y1 s3" onclick="btnPathways(1,3)"><span>Set 3</span></div>
@@ -33,7 +40,10 @@
    </svg>
   </div>
   <div class="column y2">
-    <div class="title-year">Year 2</div>
+    <div class="title-year">
+      <span class="year">Year 2</span>
+      <a class="hotspot" data-micromodal-trigger="modal-2" href='javascript:;'>b</a>
+    </div>
     <div class="btn y2 s1" onclick="btnPathways(2,1)"><span>Set 1</span></div>
     <div class="btn y2 s2" onclick="btnPathways(2,2)"><span>Set 2</span></div>
     <div class="btn y2 s3" onclick="btnPathways(2,3)"><span>Set 3</span></div>
@@ -46,7 +56,10 @@
    </svg>
   </div>
   <div class="column y3">
-    <div class="title-year">Year 3</div>
+    <div class="title-year">
+      <span class="year">Year 3</span>
+      <a class="hotspot" data-micromodal-trigger="modal-3" href='javascript:;'>c</a>
+    </div>
     <div class="btn y3 s1" onclick="btnPathways(3,1)"><span>Set 1</span></div>
     <div class="btn y3 s2" onclick="btnPathways(3,2)"><span>Set 2</span></div>
     <div class="btn y3 s3" onclick="btnPathways(3,3)"><span>Set 3</span></div>
@@ -59,7 +72,10 @@
    </svg>
   </div>
   <div class="column y4">
-    <div class="title-year">Year 4</div>
+    <div class="title-year">
+      <span class="year">Year 4</span>
+      <a class="hotspot" data-micromodal-trigger="modal-4" href='javascript:;'>d</a>
+    </div>
     <div class="btn y4 s1" onclick="btnPathways(4,1)"><span>Set 1</span></div>
     <div class="btn y4 s2" onclick="btnPathways(4,2)"><span>Set 2</span></div>
     <div class="btn y4 s3" onclick="btnPathways(4,3)"><span>Set 3</span></div>
@@ -127,6 +143,112 @@
     </div>   
   </div>
 </div>
+
+<!-- [a] -->
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title">
+          a) Entrance, Setting & Courses
+        </h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modal-content-content">
+        <div class="modal__content">
+          <ul>
+            <li>Before joining ECP, students sit an English placement test and are set according to their current level of English.</li>
+            <li>All pathways for students starting in year 1, lead to the possibility of studying English A at IB. Each set studies literacy and language skills, literature and textual analysis as well as language input (grammar and vocabulary) appropriate to their level of English.</li>
+          </ul>
+        </div>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [b] -->
+<div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title">
+          b) Changing classes
+        </h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modal-content-content">
+        <div class="modal__content">
+          <ul>
+            <li>Students can be moved to a different set at any time in the school year after the class teacher, in consultation with colleagues, has fully assessed their ability across all language skills and has evaluated their learning needs.</li>
+          </ul>
+        </div>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [c] -->
+<div class="modal micromodal-slide" id="modal-3" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title">
+          c) Y4 External Exams
+        </h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modal-content-content">
+        <div class="modal__content">
+          <ul>
+            <li>In Year 4 all students have the opportunity to sit external English exams.</li>
+            <li>4-1 sit IGCSE English First Language.</li>
+            <li>4-2 sit either IGCSE or CAE (Cambridge Advanced English)</li>
+            <li>4-3 sit CAE</li>
+            <li>4-4 sit either CAE or FCE</li>
+          </ul>
+          <p>IGCSE is the international equivalent of the English 1st language exam that school students take in England and Wales at the age of 16. Cambridge CAE tests students to C1 and C2 levels on the Common European Framework for Languages (CEFR).
+          <br>An A grade at FCE is equivalent to a pass at CAE.</p>
+        </div>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [d] -->
+<div class="modal micromodal-slide" id="modal-4" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title">
+          d) Entry to IB
+        </h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modal-content-content">
+        <div class="modal__content">
+          <ul>
+            <li>IB English A courses are English first language and focus on textual analysis.</li>
+            <li>IB English B is a second language course and focuses on developing language knowledge and skills.</li>
+            <li>Students can not take IB English B after sitting IGCSE English 1st Language. They must continue to IB English A.</li>
+            <li>Students usually need C1 level (FCE grade A or CAE pass) to continue to English A.</li>
+            <li>For students who are planning to study a technical subject at university, IB English B may be an appropriate option for IB.</li>
+          </ul>
+        </div>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
   var arrYears = [];
   var arrSets = [];
@@ -234,4 +356,27 @@
   https://www.quackit.com/html/templates/css_flexbox_templates.cfm
   */
 
+  document.addEventListener("DOMContentLoaded", function() {
+  
+  try {
+    
+    MicroModal.init({
+      awaitCloseAnimation: true,// set to false, to remove close animation
+      onShow: function(modal) {
+        console.log("micromodal open");
+      },
+      onClose: function(modal) {
+        console.log("micromodal close");
+      }
+    });
+    
+  } catch (e) {
+    console.log("micromodal error: ", e);
+  }
+  
+});
+
 </script>
+
+</body>
+</html>
