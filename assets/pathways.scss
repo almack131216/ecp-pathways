@@ -7,7 +7,9 @@ https://codepen.io/nelsonleite/pen/jMjMdB
 */
 
 $btn-height: 80px;
+$btn-height-sm: 60px;
 $btn-margin: 20px;
+$btn-margin-sm: 10px;
 $line-offset: 90px;
 $line-width: 40px;
 $title-height: 100px;
@@ -32,8 +34,11 @@ $color_debug-2:transparent;
 $color_debug-3:transparent;
 
 
-$bp: 800px;
-$bp-1: 799px;
+$bp: 900px;
+$bp-1: 899px;
+
+$bp2: 480px;
+$bp2-1: 479px;
 
 .accent-1 {color:$color_accent-1;}
 .accent-2 {color:$color_accent-2;}
@@ -55,6 +60,9 @@ body {
 
     @media(max-width:$bp-1){
         flex-direction: column;
+    }
+    @media(max-width:$bp2-1){
+        zoom:0.75;
     }
 
     .column-legend {
@@ -106,6 +114,11 @@ body {
         @media(max-width:$bp-1){
             flex-direction: row;
         }
+        // @media(max-width:$bp2-1){
+        //     flex: unset;
+        //     display: block;
+        //     width: 100%;
+        // }        
 
         > div {
             font-size: 20px;    
@@ -116,13 +129,17 @@ body {
             /* flex: 1; */
             @media(max-width:$bp-1){
                 width:20%;
-                background:blue;
+                background:$color_debug-2;
                 text-align:center;
                 margin:0;
                 &:nth-child(odd){
-                    background:grey;
+                    background:$color_debug-3;
                 }
             }
+            // @media(max-width:$bp2-1){
+            //     display:inline-block;
+            //     margin:0 2%;
+            // }
         }
         > .title-year {
             margin:0;
@@ -139,8 +156,11 @@ body {
             @media(max-width:$bp-1){
                 width:20%;
                 height:auto;
-                line-height:$btn-height;
-            }            
+                line-height:30px;
+            }
+            // @media(max-width:$bp2-1){
+            //     width:100%;
+            // }            
         }
         > .btn {
             /* position:absolute;
@@ -156,11 +176,20 @@ body {
                 color: white;
                 border:2px solid $color_accent-4;
                 cursor:pointer;
+
+                @media(max-width:$bp2-1){
+                    width: $btn-height-sm;
+                    height: $btn-height-sm;
+                    font-size:14px;
+                }
             }
         }
         &.exams > .btn > span {
             font-size:14px;
-            background: $color_accent-1;      
+            background: $color_accent-1;
+            @media(max-width:$bp2-1){
+                font-size:12px;
+            }    
         }
 
         > div {
@@ -174,7 +203,7 @@ body {
             .title-year {
                 span.ib-disc {
                     display:inline-block;
-                    border:1px solid white;
+                    border:2px solid white;
                     border-radius:50%;
                     width:60px;
                     height:60px;
@@ -199,6 +228,7 @@ body {
                     @media(max-width:$bp-1){
                         width:80%;
                         height:auto;
+                        padding:$btn-margin-sm;
                     }
 
                     #EnglishA {
@@ -206,6 +236,14 @@ body {
                     }
                     #EnglishB {
                         display:none;
+                    }
+
+                    p {
+                        margin-top:0;
+
+                        &:last-child {
+                            // margin-bottom:0;
+                        }
                     }
                 }
             }
@@ -222,6 +260,7 @@ body {
                 @media(max-width:$bp-1){
                     width:auto;
                     // height:auto;
+                    padding: $btn-margin-sm;
                 }
 
                 > span {
@@ -241,7 +280,8 @@ body {
                         text-align: left;
                         border-bottom:2px solid white;
                         border-right:0;
-                        padding-bottom:$btn-margin;
+                        padding-bottom:$btn-margin-sm;
+                        padding-right:0;
                     }
                 }
                 &.x {
@@ -291,6 +331,7 @@ body {
                         text-align: right;
                         border-top:2px solid white;
                         border-left:0;
+                        padding-left:0;
                     }
                 }
             }
@@ -316,6 +357,12 @@ body {
             }
             top:0 !important;
             bottom:0 !important;
+        }
+        @media(max-width:$bp2-1){
+            &:not(.from-base-to-top){
+                height:20px !important;
+            }
+
         }
 
         &.spacer {
@@ -409,7 +456,7 @@ body {
                 bottom:0;
                 @media(max-width:$bp-1){
                     // left:70%;
-                    height:100% !important;
+                    height:100%;
                 }
             }
         }
@@ -544,8 +591,7 @@ body {
         }     
     }
     &.y4.s1,
-    &.y4.s2,
-    &.y4.s3 {
+    &.y4.s2 {
         .column.ib.choose > div.ib.a {
             opacity:1;
         }
@@ -564,8 +610,7 @@ body {
             #EnglishB {
                 display:none;
             } 
-        }
-           
+        }           
     }
     &.y4.s4 {        
         .column.ib.choose > div.ib.b {
@@ -586,8 +631,37 @@ body {
             #EnglishB {
                 display:block;
             }  
+        }          
+    }
+    &.y4.s3 {
+        .column.ib.choose > div.ib.a,
+        .column.ib.choose > div.ib.b {
+            opacity:1;
         }
-          
+        .column.ib.choose > div.ib.x {
+            opacity:1;
+            border-left-color: white;
+            border-right-color: white;
+            @media(max-width:$bp-1){
+                border-top-color: white;
+                border-bottom-color: white;
+            }          
+        }    
+        .column.ib.text {
+            > div.ib.x {opacity:1;}
+            #EnglishA,
+            #EnglishB {
+                display:block;
+            } 
+        }           
+    }
+
+    &.y4 {
+        .column.ib {
+            .title-year {
+                opacity:1;
+            }
+        }
     }
 }
 
