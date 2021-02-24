@@ -165,7 +165,6 @@ body {
             
             span.year {
                 display:block;
-                background:red;
                 margin:10px auto;                
                 // line-height:70px;
             }
@@ -697,6 +696,37 @@ body {
     display: none;
   }
   
-  .modal.is-open {
-    display: block;
-  }
+.modal.is-open {
+display: block;
+}
+
+.modal__overlay {
+    background: rgba(255,255,255,0.75);
+
+    .modal__container {
+        background:$color_primary;
+        color:white;
+        width:65%;
+    
+        @media(max-width:$bp-1){
+            width:95%;
+            padding:15px;
+        }
+
+        .modal__content {
+            color:white;
+            @media(max-width:$bp-1){
+                margin-top:15px;
+            }
+        }
+        button.modal__close {
+            color:white;
+        }
+        h2.modal__title {
+            color:$color_accent-2;
+        }
+    }
+    
+}
+
+  
