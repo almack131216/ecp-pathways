@@ -147,6 +147,7 @@ body {
             display:block;
             font-size:15px;
             @media(max-width:$bp-1){
+                padding:15px 0;
                 width:20%;
                 height:auto;
                 // line-height:30px;
@@ -355,10 +356,10 @@ body {
         /* background:green; */
         // top:125px;
         bottom:auto;
-        @media(max-width:$bp-1){
+        @media(min-width:$bp2-1) and (max-width:$bp-1){
             width:auto;
             &:not(.from-base-to-top){
-                height:$line-width !important;
+                height:20px !important;
             }
             top:0 !important;
             bottom:0 !important;
@@ -367,7 +368,6 @@ body {
             &:not(.from-base-to-top){
                 height:20px !important;
             }
-
         }
 
         &.spacer {
