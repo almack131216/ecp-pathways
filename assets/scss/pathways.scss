@@ -79,12 +79,14 @@ body {
             display:block;
             width:120px;
             height:120px;
-            background-image:url(https://www.englishcollege.cz/wp-content/themes/ecp/assets/ECP-logo-full-white-transparent.svg);
-            background-repeat:no-repeat;
-            background-size: 500px;
-            background-color:$color_debug-1;
+
             @media(max-width:$bp-1){
                 // display:inline-block;
+            }
+
+            img {
+                width:100%;
+                height:auto;
             }
 
             span {
@@ -96,8 +98,8 @@ body {
             display:block;
             color:white;
             font-size:24px;
-            line-height:30px;
-            word-break: 1;
+            line-height:34px;
+            
             @media(max-width:$bp-1){
                 // display:inline-block;
                 padding-left:$btn-margin;
