@@ -33,7 +33,6 @@ $color_debug-1:transparent;
 $color_debug-2:transparent;
 $color_debug-3:transparent;
 
-
 $bp: 900px;
 $bp-1: 899px;
 
@@ -113,12 +112,7 @@ body {
         justify-content: center;
         @media(max-width:$bp-1){
             flex-direction: row;
-        }
-        // @media(max-width:$bp2-1){
-        //     flex: unset;
-        //     display: block;
-        //     width: 100%;
-        // }        
+        }   
 
         > div {
             font-size: 20px;    
@@ -136,10 +130,6 @@ body {
                     background:$color_debug-3;
                 }
             }
-            // @media(max-width:$bp2-1){
-            //     display:inline-block;
-            //     margin:0 2%;
-            // }
         }
         > .title-year {
             margin:0;
@@ -158,10 +148,7 @@ body {
                 width:20%;
                 height:auto;
                 // line-height:30px;
-            }
-            // @media(max-width:$bp2-1){
-            //     width:100%;
-            // }       
+            }     
             
             span.year {
                 display:block;
@@ -181,8 +168,6 @@ body {
             }
         }
         > .btn {
-            /* position:absolute;
-            z-index:0;     */
             > span {
                 border-radius:50%;
                 display: flex;
