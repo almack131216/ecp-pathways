@@ -3,6 +3,10 @@ var arrSets = [];
 var styleWrapperInit = 'wrapper init';
 var styleWrapper = '';
 
+function ConsoleLog(getMsg){
+    // console.log('[CL] ' + getMsg)
+}
+
 function updateStatusString(arrYears, arrSets) {
 	// document.getElementById('txt-years').innerHTML = JSON.stringify(arrYears) + ' (' + arrYears.length + ')';
 	// document.getElementById('txt-sets').innerHTML = JSON.stringify(arrSets) + ' (' + arrSets.length + ')';
@@ -26,7 +30,7 @@ function updateStatusString(arrYears, arrSets) {
 			lineUpOrDown = 'up v-' + yDiff;
 		}
 		var lineDiv = 'column-line-wrap y' + arrYears.length;
-		console.log('lineDiv: ' + lineDiv);
+		ConsoleLog('[updateStatusString] | lineDiv: ' + lineDiv);
 		$('.column-line-wrap.y' + arrYears.length).attr(
 			'class',
 			lineDiv + ' xxx ' + lineUpOrDown + ' from-S' + arrSets[arrSets.length - 2]
@@ -36,7 +40,7 @@ function updateStatusString(arrYears, arrSets) {
 
 function updateSet(getYear, getSet) {
 	arrSets[getYear - 1] = getSet;
-	console.log('SET ' + getSet);
+	ConsoleLog('[updateSet] | SET ' + getSet);
 
 	for (i = 0; i < 5; i++) {
 		if (i > getYear) {
@@ -50,8 +54,8 @@ function updateSet(getYear, getSet) {
 }
 
 function btnPathways(getYear, getSet) {
-	console.log('--------------------');
-	console.log('Year and Set = ' + getYear + ', ' + getSet);
+	ConsoleLog('[btnPathways] | --------------------');
+	ConsoleLog('[btnPathways] | Year and Set = ' + getYear + ', ' + getSet);
 
 	var isClickable = $('.btn.y' + getYear + '.s' + getSet + ' span').css('cursor') != 'not-allowed' ? true : false;
 	if (!isClickable) return;
@@ -60,25 +64,25 @@ function btnPathways(getYear, getSet) {
 		arrYears.push(getYear);
 		arrSets.push(getSet);
 		updateSet(getYear, getSet);
-		// console.log('YR | START | Year ' + getYear + ', ' + getSet);
+		// ConsoleLog('[btnPathways] | YR | START | Year ' + getYear + ', ' + getSet);
 	} else if (arrYears.length == getYear) {
-		// console.log('YR | NO CHANGE | Year ' + getYear + ', ' + getSet);
+		// ConsoleLog('[btnPathways] | YR | NO CHANGE | Year ' + getYear + ', ' + getSet);
 		updateSet(getYear, getSet);
-		// console.log('> SET Year ' + getYear);
+		// ConsoleLog('[btnPathways] | > SET Year ' + getYear);
 	} else if (arrYears.length == getYear - 1) {
 		arrYears.push(getYear);
 		arrSets.push(getSet);
 		updateSet(getYear, getSet);
-		// console.log('> YR | SET | Year ' + getYear + ', ' + getSet);
+		// ConsoleLog('[btnPathways] | > YR | SET | Year ' + getYear + ', ' + getSet);
 	} else if (getYear < arrYears.length + 1) {
 		arrYears.splice(getYear, arrYears.length - getYear);
 		arrSets.splice(getYear, arrSets.length - getYear);
 		updateSet(getYear, getSet);
-		// console.log('< YR | GO BACK | Year ' + getYear + ', ' + getSet);
+		// ConsoleLog('[btnPathways] | < YR | GO BACK | Year ' + getYear + ', ' + getSet);
 	}
 	// updateSet(getYear,getSet);
 	// updateStatusString(arrYears,arrSets);
-	console.log('OPACITY: ' + $('.btn.y2.s4').css('opacity'));
+	ConsoleLog('[btnPathways] | OPACITY: ' + $('.btn.y2.s4').css('opacity'));
 }
 
 //REF:
@@ -92,13 +96,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		MicroModal.init({
 			awaitCloseAnimation: true, // set to false, to remove close animation
 			onShow: function(modal) {
-				console.log('micromodal open');
+				ConsoleLog('[DOMContentLoaded] | micromodal open');
 			},
 			onClose: function(modal) {
-				console.log('micromodal close');
+				ConsoleLog('[DOMContentLoaded] | micromodal close');
 			}
 		});
 	} catch (e) {
-		console.log('micromodal error: ', e);
+		ConsoleLog('micromodal error: ', e);
 	}
 });
